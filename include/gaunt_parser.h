@@ -26,7 +26,10 @@ namespace gaunt_parser {
                 case 's':
                     startValue = optarg;
                     if (startValue == NULL || startValue[0] == '\0') {
-                        std::fstream outFile("gaunt.mod"); 
+                        std::ofstream outFile; // FIXME: Fix outFile, not currently working 
+                        outFile.open("gaunt.mod", std::ios::out);
+                        outFile << "module gaunt" << std::endl;
+                        outFile.close();
                     }else{
                         std::cout << "This doesn't require an argument, default is gaunt.mod" << std::endl;
                     }

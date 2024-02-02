@@ -1,9 +1,10 @@
-#include "include/gaunt_parser.h"
+#include "include/gaunt_all.h"
 #include <iostream>
 
-using namespace gaunt_parser;
+using gaunt_parser::parser;
 
 int main(int argc, char **argv){
+    // Use parser function to parse command line arguments
     parser(argc, argv);
 
    
