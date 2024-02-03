@@ -14,17 +14,23 @@ namespace gaunt_parser {
         int get;
         int sync;
         int tidy;
+        int mod;
         char *getValue = NULL;
         char *syncValue = NULL;
+        char *modValue = NULL;
         char *tidyValue = NULL;
         int index;
+
 
         opterr = 0;
 
         while((get = getopt(argc, argv, "s:g:t:y")) != -1){
             switch(get){
                 case 's':
+                    modValue = (optarg);
                     file;
+                    file << "mod "<< modValue << std::endl;
+                    file.close();
                     break;
                 case 'g':
                     getValue = (optarg);
