@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <iostream>
 
-namespace gaunt_parser{
+namespace gaunt_include{
     static char currentToken[4096];
     static size_t currentTokenLength;
 

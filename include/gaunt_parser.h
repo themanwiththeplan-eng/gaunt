@@ -5,7 +5,7 @@
 #include <fstream>
 #include "gaunt_include.h"
 
-
+using namespace gaunt_include;
 
 namespace gaunt_parser {
     int parser(int argc, char **argv){
