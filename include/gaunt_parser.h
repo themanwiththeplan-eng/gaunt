@@ -5,15 +5,15 @@
 #include <fstream>
 
 
+
 namespace gaunt_parser {
     int parser(int argc, char **argv){
+        std::ofstream file("gaunt.mod");
        
 
-        int start;
         int get;
         int sync;
         int tidy;
-        char *startValue = NULL;
         char *getValue = NULL;
         char *syncValue = NULL;
         char *tidyValue = NULL;
@@ -21,18 +21,10 @@ namespace gaunt_parser {
 
         opterr = 0;
 
-        while((get = getopt(argc, argv, "s:g:")) != -1){
+        while((get = getopt(argc, argv, "s:g:t:y")) != -1){
             switch(get){
                 case 's':
-                    startValue = optarg;
-                    if (startValue == NULL || startValue[0] == '\0') {
-                        std::ofstream outFile; // FIXME: Fix outFile, not currently working 
-                        outFile.open("gaunt.mod", std::ios::out);
-                        outFile << "module gaunt" << std::endl;
-                        outFile.close();
-                    }else{
-                        std::cout << "This doesn't require an argument, default is gaunt.mod" << std::endl;
-                    }
+                    file;
                     break;
                 case 'g':
                     getValue = (optarg);
@@ -48,12 +40,7 @@ namespace gaunt_parser {
                     if(optopt == 'g'){
                         std::cout << stderr << "Option -" << optopt << " requires an argument." << std::endl;
                     }
-                    else if(isprint(optopt)){
-                        std::cout << stderr << "Unknown option `-" << optopt << "'." << std::endl;
-                    }
-                    else{
-                        std::cout << stderr << "Unknown option character `\\x" << optopt << "'." << std::endl;
-                    }
+                    
                     return 1;
                 default:
                     abort();
