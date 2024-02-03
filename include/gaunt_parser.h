@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+#include "gaunt_include.h"
 
 
 
@@ -24,6 +25,7 @@ namespace gaunt_parser {
 
         opterr = 0;
 
+        // TODO: implement the -g, -t, and -y options
         while((get = getopt(argc, argv, "s:g:t:y")) != -1){
             switch(get){
                 case 's':
@@ -43,7 +45,7 @@ namespace gaunt_parser {
                     break;
                 
                 case '?':
-                    if(optopt == 'g'){
+                    if(optopt == 'g' || optopt == 's'){
                         std::cout << stderr << "Option -" << optopt << " requires an argument." << std::endl;
                     }
                     
