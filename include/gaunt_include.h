@@ -32,5 +32,42 @@ namespace gaunt_include{
     } TokenType;
 
     TokenType tokenType = STATE_FindStartOfData; 
+
+    void parseData(char c)
+    {
+      while (tokenType != STATE_ParseError && tokenType != STATE_EndOfData)
+      {
+        int c = fgetc(stdin);
+        if (c == -1)
+        {
+            switch (tokenType)
+            {
+            case STATE_ParseNumber:
+            case STATE_CheckEndOfString:
+                printToken();
+                //FIXME: a value of type "enum gaunt_include::<unnamed>" cannot be assigned to an entity of type "gaunt_include::TokenType"C/C++(513)
+                // this error shouldn't be happening here, not sure why, maybe because using namespace?
+                tokenType = STATE_EndOfData;
+                break;
+            case STATE_ParseString:
+                std::cout << "Error: Unterminated string" << std::endl;
+                tokenType = STATE_ParseError;
+                break;
+            case STATE_FindStartOfData:
+            case STATE_FindStartOfToken:
+            case STATE_FindDelimiter:
+                tokenType = STATE_EndOfData;
+                break;
+            case STATE_ParseError:
+            case STATE_EndOfData:
+                break;
+            }
+        }
+        switch (tokenType)
+        {
+
+        }
+
+      }
+    }
 }
-// TODO: implement #include tokenization and parsing here
