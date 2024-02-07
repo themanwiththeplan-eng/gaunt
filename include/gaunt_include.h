@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//TODO: maybe just rewrite this entire thing in c honestly and use https://github.com/tsoding/flag.h/blob/master/flag.h as reference
+
 //BUG: some issue with function definition ODR rules, have to fix this going forward
 namespace gaunt_include {
 static char currentToken[4096];
@@ -14,8 +16,9 @@ void addToken(char c) {
 }
 
 void printToken() {
-  std::cout << currentToken << (int)currentTokenLength << std::endl;
+    printf('%s', c);
 }
+
 
 enum TokenType {
   STATE_FindStartOfData,

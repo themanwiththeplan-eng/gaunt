@@ -1,6 +1,8 @@
 #include "include/gaunt_all.h"
 #include <iostream>
 
+#pragma once
+
 using gaunt_parser::parser;
 
 int main(int argc, char **argv){
