@@ -21,10 +21,6 @@ install(
 )
 
 install(
-    FILES ${PROJECT_SOURCE_DIR}/include/
-    DESTINATION include)
-
-install(
     TARGETS gaunt
     LIBRARY DESTINATION lib
 )
